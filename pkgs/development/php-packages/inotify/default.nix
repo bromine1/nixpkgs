@@ -1,6 +1,5 @@
 { buildPecl
 , lib
-, stdenv
 }:
 
 buildPecl {
@@ -11,11 +10,11 @@ buildPecl {
 
   doCheck = true;
 
-  meta = with lib; {
-    broken = stdenv.isDarwin; # no inotify support
+  meta = {
     description = "Inotify bindings for PHP";
-    license = licenses.php301;
     homepage = "https://github.com/arnaud-lb/php-inotify";
-    maintainers = teams.php.members;
+    license = lib.licenses.php301;
+    maintainers = lib.teams.php.members;
+    platforms = [ "aarch64-linux" "i686-linux" "x86_64-linux" ];
   };
 }
